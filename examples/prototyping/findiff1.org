@@ -1,0 +1,57 @@
+
+
+* Heat equation 
+$$
+\frac{\partial u}{\partial t} = \alpha \nabla^2 u
+$$
+
+$$
+\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
+$$
+
+
+* Finite differences
+
+#+begin_src python
+  import jax.numpy as jnp
+
+  def build_1Dgrid(x_1,x_2,nx):
+
+      grid_x = jnp.linspace(x_1, x_2, nx)
+      return grid_x
+
+  def build_2Dgrid(x_1, x_2, nx,
+                   y_1, y_2, ny):
+
+      grid_x = jnp.linspace(x_1, x_2, nx)
+      grid_y = jnp.linspace(y_1, y_2, ny)
+      x1, y1 = jnp.meshgrid(grid_x, grid_y)
+      xy = jnp.stack([x1,y1], axis=2)
+      return xy
+
+  def build_3Dgrid(x_1, x_2, nx,
+                   y_1, y_2, ny,
+                   z_1, z_2, nz):
+
+      grid_x = jnp.linspace(x_1, x_2, nx)
+      grid_y = jnp.linspace(y_1, y_2, ny)
+      grid_z = jnp.linspace(z_1, z_2, nz)
+      x1, y1, z1 = jnp.meshgrid(grid_x, grid_y, grid_z)
+      xyz = jnp.stack([x1, y1, z1], axis=3)
+      return xyz
+
+  def build_fgrid(*dimensions):
+
+      fgrid0 = jnp.zeros(dimensions)
+      return fgrid0
+
+  def setICt0(fgrid, x):
+
+      fgrid = fgrid.at[0].set(x)
+      return fgrid
+
+  def setICx(fgrid):
+
+
+
+#+end_src
