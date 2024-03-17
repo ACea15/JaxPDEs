@@ -12,7 +12,7 @@ $$
 
 * Finite differences
 
-#+begin_src python
+#+begin_src python :tangle yes
   import jax.numpy as jnp
 
   def build_1Dgrid(x_1,x_2,nx):
