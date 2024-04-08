@@ -109,3 +109,5 @@ def moving_window3D(matrix, window_shape):
     # cartesian product => [[x,y], [x,y], ...]
 
     return vmap(lambda start: jax.lax.dynamic_slice(matrix, (start[1], start[0]), (window_height, window_width)))(starts_xy)
+
+
